@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мотанка — Славянские куклы ручной работы</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Alegreya:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --crimson: #C0392B;
+    --deep-red: #8B0000;
+    --gold: #C8963E;
+    --warm-gold: #D4A843;
+    --linen: #F2EBE0;
+    --parchment: #E8DDD0;
+    --dark-earth: #2C1810;
+    --mid-earth: #5C3317;
+    --cream: #FAF5ED;
+    --text: #1E0F08;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--text);
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+  }
+
+  /* ─── ORNAMENT PATTERN ─── */
+  .ornament-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .ornament-divider::before,
+  .ornament-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .ornament-symbol {
+    color: var(--crimson);
+    font-size: 1.4rem;
+    letter-spacing: 0.5rem;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 3rem;
+    background: rgba(250, 245, 237, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200, 150, 62, 0.25);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--deep-red);
+    letter-spacing: 0.08em;
+  }
+  .nav-logo span { color: var(--gold); font-style: italic; }
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--mid-earth);
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    font-weight: 400;
+    transition: color 0.3s;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+  }
+  .nav-links a:hover { color: var(--crimson); }
+  .nav-cta {
+    background: var(--crimson);
+    color: white !important;
+    padding: 0.55rem 1.4rem;
+    border-radius: 0;
+    transition: background 0.3s !important;
+  }
+  .nav-cta:hover { background: var(--deep-red) !important; color: white !important; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(ellipse at 20% 50%, rgba(192,57,43,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(200,150,62,0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  /* Folk pattern border top */
+  .hero::after {
+    content: '◆ ◇ ◆ ◇ ◆ ◇ ◆ ◇ ◆ ◇ ◆ ◇ ◆ ◇ ◆ ◇ ◆ ◇ ◆ ◇ ◆ ◇ ◆ ◇ ◆';
+    position: absolute;
+    top: 80px;
+    left: 0; right: 0;
+    text-align: center;
+    color: var(--crimson);
+    opacity: 0.15;
+    font-size: 0.6rem;
+    letter-spacing: 0.3rem;
+    padding: 0.5rem 0;
+  }
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 4rem 4rem 6rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 5vw, 5rem);
+    line-height: 1.1;
+    color: var(--dark-earth);
+    margin-bottom: 0.5rem;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--crimson);
+    display: block;
+  }
+
+  .hero-subtitle {
+    font-family: 'Alegreya', serif;
+    font-size: 1.25rem;
+    color: var(--mid-earth);
+    line-height: 1.7;
+    margin: 1.8rem 0 2.5rem;
+    max-width: 440px;
+    font-style: italic;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--crimson);
+    color: white;
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: inline-block;
+    transition: all 0.3s;
+    border: 2px solid var(--crimson);
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--deep-red);
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+  }
+  .btn-primary:hover::before { transform: translateX(0); }
+  .btn-primary span { position: relative; z-index: 1; }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--crimson);
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--crimson);
+    transition: all 0.3s;
+  }
+  .btn-secondary:hover {
+    background: var(--crimson);
+    color: white;
+  }
+
+  .hero-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0;
+    width: 100%;
+    height: 100vh;
+    padding-top: 80px;
+  }
+
+  .hero-image-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  .hero-image-grid img:hover { transform: scale(1.04); }
+
+  .hero-image-grid .img-main {
+    grid-row: 1 / 3;
+  }
+
+  /* ─── STATS BAR ─── */
+  .stats-bar {
+    background: var(--dark-earth);
+    padding: 2.5rem 6rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .stat-item { text-align: center; }
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--gold);
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-top: 0.3rem;
+  }
+  .stat-divider {
+    width: 1px;
+    height: 50px;
+    background: rgba(200,150,62,0.3);
+  }
+
+  /* ─── SECTION BASE ─── */
+  section { padding: 6rem 6rem; }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  .section-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    color: var(--dark-earth);
+    line-height: 1.2;
+  }
+  .section-title em { color: var(--crimson); font-style: italic; }
+
+  /* ─── ABOUT ─── */
+  .about {
+    background: var(--parchment);
+    position: relative;
+    overflow: hidden;
+  }
+  .about::before {
+    content: '✦';
+    position: absolute;
+    font-size: 20rem;
+    color: rgba(192,57,43,0.03);
+    right: -3rem;
+    top: -5rem;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .about-image {
+    position: relative;
+  }
+  .about-image img {
+    width: 100%;
+    height: 550px;
+    object-fit: cover;
+  }
+  .about-image::before {
+    content: '';
+    position: absolute;
+    top: -1.5rem;
+    left: -1.5rem;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    border: 1px solid var(--gold);
+    z-index: 0;
+  }
+  .about-image img { position: relative; z-index: 1; }
+
+  .about-badge {
+    position: absolute;
+    bottom: -1.5rem;
+    right: -1.5rem;
+    background: var(--crimson);
+    color: white;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    font-family: 'Playfair Display', serif;
+  }
+  .about-badge-num { font-size: 1.8rem; line-height: 1; }
+  .about-badge-text { font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; text-align: center; margin-top: 0.2rem; }
+
+  .about-text p {
+    font-size: 1.15rem;
+    line-height: 1.85;
+    color: var(--mid-earth);
+    margin-bottom: 1.5rem;
+  }
+  .about-text p strong { color: var(--dark-earth); font-weight: 500; }
+
+  .features-list {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .feature-icon {
+    color: var(--crimson);
+    font-size: 1.1rem;
+    margin-top: 0.1rem;
+    flex-shrink: 0;
+  }
+  .feature-text {
+    font-size: 0.9rem;
+    color: var(--mid-earth);
+    line-height: 1.4;
+  }
+
+  /* ─── CATALOG ─── */
+  .catalog { background: var(--cream); }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .product-card {
+    background: white;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s, box-shadow 0.4s;
+    cursor: pointer;
+  }
+  .product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(139,0,0,0.12);
+  }
+
+  .product-image {
+    height: 360px;
+    overflow: hidden;
+    position: relative;
+  }
+  .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  .product-card:hover .product-image img { transform: scale(1.08); }
+
+  .product-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--crimson);
+    color: white;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+  }
+
+  .product-info {
+    padding: 1.5rem;
+    border-top: 2px solid var(--crimson);
+  }
+  .product-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: var(--dark-earth);
+    margin-bottom: 0.4rem;
+  }
+  .product-desc {
+    font-size: 0.9rem;
+    color: var(--mid-earth);
+    line-height: 1.5;
+    margin-bottom: 1.2rem;
+    font-style: italic;
+  }
+  .product-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .product-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--crimson);
+  }
+  .product-price span {
+    font-size: 0.75rem;
+    color: var(--mid-earth);
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .product-btn {
+    background: var(--dark-earth);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.3rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .product-btn:hover { background: var(--crimson); }
+
+  /* ─── CRAFT PROCESS ─── */
+  .process {
+    background: var(--dark-earth);
+    color: white;
+  }
+  .process .section-title { color: white; }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 4rem;
+    position: relative;
+  }
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 2.5rem;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--gold), transparent);
+  }
+
+  .process-step {
+    text-align: center;
+    padding: 0 2rem;
+    position: relative;
+  }
+
+  .step-number {
+    width: 5rem;
+    height: 5rem;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+    background: var(--dark-earth);
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: white;
+    margin-bottom: 0.7rem;
+  }
+  .step-desc {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+  }
+
+  /* ─── TESTIMONIALS ─── */
+  .testimonials {
+    background: var(--linen);
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .testimonial-card {
+    background: white;
+    padding: 2.5rem;
+    position: relative;
+    border-left: 3px solid var(--crimson);
+  }
+  .testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    color: var(--crimson);
+    opacity: 0.08;
+    line-height: 1;
+  }
+
+  .stars {
+    color: var(--gold);
+    margin-bottom: 1rem;
+    letter-spacing: 0.1rem;
+    font-size: 0.9rem;
+  }
+
+  .testimonial-text {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--mid-earth);
+    font-style: italic;
+    margin-bottom: 1.5rem;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--parchment);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    color: var(--crimson);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .author-name {
+    font-size: 0.95rem;
+    color: var(--dark-earth);
+    font-weight: 500;
+  }
+  .author-city {
+    font-size: 0.75rem;
+    color: var(--mid-earth);
+    opacity: 0.7;
+  }
+
+  /* ─── CTA ─── */
+  .cta-section {
+    background: linear-gradient(135deg, var(--deep-red) 0%, var(--crimson) 50%, #E74C3C 100%);
+    text-align: center;
+    padding: 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇';
+    position: absolute;
+    top: 0.8rem;
+    left: 0; right: 0;
+    font-size: 0.5rem;
+    letter-spacing: 0.2rem;
+    color: rgba(255,255,255,0.12);
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .cta-section::after {
+    content: '◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇';
+    position: absolute;
+    bottom: 0.8rem;
+    left: 0; right: 0;
+    font-size: 0.5rem;
+    letter-spacing: 0.2rem;
+    color: rgba(255,255,255,0.12);
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .cta-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    color: white;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .cta-subtitle {
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.8);
+    font-style: italic;
+    margin-bottom: 3rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+  .btn-white {
+    background: white;
+    color: var(--crimson);
+    padding: 1.1rem 3rem;
+    text-decoration: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    font-weight: 600;
+  }
+  .btn-white:hover {
+    background: var(--dark-earth);
+    color: white;
+  }
+  .btn-outline-white {
+    background: transparent;
+    color: white;
+    padding: 1.1rem 3rem;
+    text-decoration: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.6);
+    transition: all 0.3s;
+  }
+  .btn-outline-white:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: white;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--dark-earth);
+    color: rgba(255,255,255,0.65);
+    padding: 4rem 6rem 2rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 3rem;
+  }
+
+  .footer-brand .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .footer-brand .logo span { color: var(--gold); }
+  .footer-brand p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-col h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: white;
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.05em;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li {
+    margin-bottom: 0.6rem;
+    font-size: 0.88rem;
+  }
+  .footer-col ul a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.55);
+    transition: color 0.3s;
+  }
+  .footer-col ul a:hover { color: var(--gold); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+  }
+  .social-link {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: all 0.3s;
+  }
+  .social-link:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards;
+  }
+  .fade-in:nth-child(1) { animation-delay: 0.1s; }
+  .fade-in:nth-child(2) { animation-delay: 0.25s; }
+  .fade-in:nth-child(3) { animation-delay: 0.4s; }
+  .fade-in:nth-child(4) { animation-delay: 0.55s; }
+
+  .hero-text > * {
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards;
+  }
+  .hero-text > *:nth-child(1) { animation-delay: 0.2s; }
+  .hero-text > *:nth-child(2) { animation-delay: 0.4s; }
+  .hero-text > *:nth-child(3) { animation-delay: 0.55s; }
+  .hero-text > *:nth-child(4) { animation-delay: 0.7s; }
+  .hero-text > *:nth-child(5) { animation-delay: 0.85s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    section { padding: 5rem 3rem; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-text { padding: 5rem 3rem 3rem; }
+    .hero-image-grid { height: 55vw; padding-top: 0; }
+    .about-grid { grid-template-columns: 1fr; }
+    .products-grid { grid-template-columns: 1fr 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .process-steps::before { display: none; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    nav { padding: 1rem 2rem; }
+    .stats-bar { padding: 2rem 3rem; flex-wrap: wrap; gap: 1.5rem; }
+    .stat-divider { display: none; }
+  }
+
+  @media (max-width: 640px) {
+    .products-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .cta-buttons { flex-direction: column; align-items: center; }
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-title { font-size: 2.5rem; }
+    section { padding: 4rem 1.5rem; }
+    .cta-section { padding: 4rem 1.5rem; }
+    nav { padding: 1rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Мо<span>танка</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">О куклах</a></li>
+    <li><a href="#catalog">Каталог</a></li>
+    <li><a href="#process">Мастерство</a></li>
+    <li><a href="#reviews">Отзывы</a></li>
+    <li><a href="#order" class="nav-cta">Заказать</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Ручная работа · Традиции предков</div>
+    <h1 class="hero-title">
+      Живая душа
+      <em>в каждой кукле</em>
+    </h1>
+    <p class="hero-subtitle">
+      Славянские куклы-мотанки, созданные по старинным традициям. Каждая несёт в себе особый оберег и бережёт тепло человеческих рук.
+    </p>
+    <div class="hero-buttons">
+      <a href="#catalog" class="btn-primary"><span>Смотреть каталог</span></a>
+      <a href="#about" class="btn-secondary">Узнать больше</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-image-grid">
+      <img class="img-main" src="Традиционная славянская кукла мотанка.png" alt="Мотанка" style="grid-row:1/3">
+      <img src="Традиционная славянская мотанка кукла.png" alt="Мотанка оберег">
+      <img src="Традиционные славянские мотанки на фоне льна.png" alt="Коллекция мотанок">
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-number">500+</span>
+    <span class="stat-label">Кукол создано</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-number">7</span>
+    <span class="stat-label">Лет мастерства</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-number">12+</span>
+    <span class="stat-label">Видов оберегов</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-number">100%</span>
+    <span class="stat-label">Натуральные материалы</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-image">
+      <img src="Славянская кукла мотанка ручной работы.png" alt="Кукла мотанка ручной работы">
+      <div class="about-badge">
+        <span class="about-badge-num">7</span>
+        <span class="about-badge-text">лет традиций</span>
+      </div>
+    </div>
+    <div class="about-text">
+      <div class="section-header" style="text-align:left; margin-bottom:2rem;">
+        <span class="section-tag">О нас</span>
+        <h2 class="section-title">Мотанка — кукла <em>без лица</em></h2>
+      </div>
+      <p>Мотанка — это древний славянский оберег, куклы, которые не имеют нарисованного лица. По преданию, это защищает от вселения злых духов и сохраняет силу защитника. Каждая кукла намотана особым образом — крест-накрест, что символизирует единство четырёх сторон света.</p>
+      <p>Мы создаём мотанок строго по традиционным техникам, используя только <strong>натуральные ткани, лён, хлопок и шерсть</strong>. Каждый элемент — орнамент, цвет, украшение — несёт определённый смысл и силу.</p>
+      <div class="features-list">
+        <div class="feature-item">
+          <span class="feature-icon">✦</span>
+          <span class="feature-text">Натуральные ткани — лён, хлопок, шерсть</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">✦</span>
+          <span class="feature-text">Традиционные обереги и символы</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">✦</span>
+          <span class="feature-text">Именные куклы на заказ</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">✦</span>
+          <span class="feature-text">Доставка по всему миру</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">✦</span>
+          <span class="feature-text">Подарочная упаковка в комплекте</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">✦</span>
+          <span class="feature-text">Описание значения каждой куклы</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATALOG -->
+<section class="catalog" id="catalog">
+  <div class="section-header">
+    <span class="section-tag">Коллекция</span>
+    <h2 class="section-title">Наши <em>мотанки</em></h2>
+  </div>
+
+  <div class="products-grid">
+    <div class="product-card fade-in">
+      <div class="product-image">
+        <img src="Славянская кукла мотанка ручной работы.png" alt="Оберег дома">
+        <span class="product-badge">Популярное</span>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Оберег дома</div>
+        <div class="product-desc">В красно-золотом наряде с традиционным орнаментом. Хранит покой и благополучие домашнего очага.</div>
+        <div class="product-footer">
+          <div class="product-price">2 400 ₽ <span>/ шт.</span></div>
+          <button class="product-btn">Заказать</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card fade-in">
+      <div class="product-image">
+        <img src="Славянская кукла мотанка ручной работы.png" alt="Берегиня">
+      </div>
+      <div class="product-info">
+        <div class="product-name">Берегиня</div>
+        <div class="product-desc">В ярком платке и нарядном переднике. Оберег для женщины — несёт здоровье и материнскую силу.</div>
+        <div class="product-footer">
+          <div class="product-price">2 800 ₽ <span>/ шт.</span></div>
+          <button class="product-btn">Заказать</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card fade-in">
+      <div class="product-image">
+        <img src="Славянская кукла мотанка ручной работы.png" alt="Зерновушка">
+        <span class="product-badge">Новинка</span>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Зерновушка</div>
+        <div class="product-desc">Круглая, как зёрнышко. Символ достатка, урожая и радости. Прекрасный подарок в новый дом.</div>
+        <div class="product-footer">
+          <div class="product-price">1 900 ₽ <span>/ шт.</span></div>
+          <button class="product-btn">Заказать</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card fade-in">
+      <div class="product-image">
+        <img src="Славянская кукла мотанка ручной работы.png" alt="Коллекция трёх мотанок">
+        <span class="product-badge">Набор</span>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Три сестры</div>
+        <div class="product-desc">Коллекция из трёх мотанок — символ единства, любви и дружбы. Идеальный подарочный набор.</div>
+        <div class="product-footer">
+          <div class="product-price">6 500 ₽ <span>/ набор</span></div>
+          <button class="product-btn">Заказать</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card fade-in">
+      <div class="product-image" style="background: var(--parchment); display:flex; align-items:center; justify-content:center;">
+        <div style="text-align:center; padding:2rem;">
+          <div style="font-size:4rem; color:var(--crimson); opacity:0.3; margin-bottom:1rem;">✦</div>
+          <div style="font-family:'Playfair Display',serif; font-size:1.2rem; color:var(--mid-earth);">На заказ</div>
+          <div style="font-size:0.85rem; color:var(--mid-earth); opacity:0.7; margin-top:0.5rem;">Ваш дизайн</div>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Именная мотанка</div>
+        <div class="product-desc">Создаём куклу по вашему пожеланию — с именем, особым оберегом, в выбранных цветах.</div>
+        <div class="product-footer">
+          <div class="product-price">от 3 200 ₽</div>
+          <button class="product-btn">Обсудить</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card fade-in">
+      <div class="product-image" style="background: var(--dark-earth); display:flex; align-items:center; justify-content:center;">
+        <div style="text-align:center; padding:2rem;">
+          <div style="font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--gold); margin-bottom:1rem; line-height:1.3;">Мастер-класс<br>по мотанке</div>
+          <div style="font-size:0.85rem; color:rgba(255,255,255,0.5);">Онлайн и офлайн</div>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Мастер-класс</div>
+        <div class="product-desc">Научим создавать мотанку своими руками. Все материалы включены. Онлайн и очно в Москве.</div>
+        <div class="product-footer">
+          <div class="product-price">1 500 ₽ <span>/ чел.</span></div>
+          <button class="product-btn">Записаться</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="section-header">
+    <span class="section-tag" style="color:var(--gold)">Наше мастерство</span>
+    <h2 class="section-title">Как рождается <em style="color:var(--gold)">мотанка</em></h2>
+  </div>
+
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-number">І</div>
+      <div class="step-title">Выбор ткани</div>
+      <div class="step-desc">Только натуральные материалы — лён, хлопок, шерстяная нить. Ткани проверяются вручную.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-number">ІІ</div>
+      <div class="step-title">Намотка основы</div>
+      <div class="step-desc">Тело куклы формируется без иглы и ножниц — только намоткой и завязыванием узлов.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-number">ІІІ</div>
+      <div class="step-title">Наряд и украшения</div>
+      <div class="step-desc">Рубашка, сарафан, передник с орнаментом. Каждый элемент несёт традиционный смысл.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-number">ІV</div>
+      <div class="step-title">Обряд и упаковка</div>
+      <div class="step-desc">Готовая кукла получает имя и описание своего значения. Упаковывается в подарочный мешочек.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="reviews">
+  <div class="section-header">
+    <span class="section-tag">Отзывы</span>
+    <h2 class="section-title">Что говорят <em>наши покупатели</em></h2>
+  </div>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">Заказала берегиню маме на день рождения. Мама была в слезах — такая красота и теплота в каждом стежке. Кукла стоит на самом видном месте. Спасибо огромное!</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">О</div>
+        <div>
+          <div class="author-name">Ольга Мищенко</div>
+          <div class="author-city">Киев</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">Брала набор «Три сестры» в подарок подругам. Пришёл в потрясающей упаковке, с карточками-описаниями каждой куклы. Всё продумано до мелочей, буду заказывать ещё!</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">М</div>
+        <div>
+          <div class="author-name">Марина Соколова</div>
+          <div class="author-city">Москва</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">Заказывала именную мотанку для себя — с моим именем и цветами, которые мне нравятся. Мастер всё согласовал заранее. Результат превзошёл все ожидания!</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">К</div>
+        <div>
+          <div class="author-name">Катерина Яковлева</div>
+          <div class="author-city">Санкт-Петербург</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="order">
+  <h2 class="cta-title">Подарите тепло<br>и защиту близким</h2>
+  <p class="cta-subtitle">Каждая мотанка — это живое послание любви, созданное вручную с душой.</p>
+  <div class="cta-buttons">
+    <a href="#catalog" class="btn-white">Выбрать куклу</a>
+    <a href="mailto:info@motanka.ru" class="btn-outline-white">Написать мастеру</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo">Мо<span>танка</span></span>
+      <p>Создаём традиционные славянские куклы-обереги с любовью и уважением к предкам. Каждая кукла — маленькое чудо из ткани и нити.</p>
+      <div class="social-links">
+        <a href="#" class="social-link">ВК</a>
+        <a href="#" class="social-link">IG</a>
+        <a href="#" class="social-link">TG</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Каталог</h4>
+      <ul>
+        <li><a href="#">Обереги дома</a></li>
+        <li><a href="#">Женские куклы</a></li>
+        <li><a href="#">Детские куклы</a></li>
+        <li><a href="#">Подарочные наборы</a></li>
+        <li><a href="#">На заказ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Информация</h4>
+      <ul>
+        <li><a href="#">О мотанках</a></li>
+        <li><a href="#">История традиций</a></li>
+        <li><a href="#">Мастер-классы</a></li>
+        <li><a href="#">Блог</a></li>
+        <li><a href="#">Отзывы</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Контакты</h4>
+      <ul>
+        <li><a href="mailto:info@motanka.ru">info@motanka.ru</a></li>
+        <li><a href="tel:+74991234567">+7 499 123-45-67</a></li>
+        <li><a href="#">Доставка и оплата</a></li>
+        <li><a href="#">Возврат</a></li>
+        <li><a href="#">Политика конфиденц.</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Мотанка. Все права защищены.</span>
+    <span style="color:rgba(200,150,62,0.5)">◆ ◇ ◆</span>
+    <span>Ручная работа с любовью</span>
+  </div>
+</footer>
+
+<script>
+  // Intersection Observer for scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.product-card, .testimonial-card, .process-step').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+    observer.observe(el);
+  });
+
+  // Smooth nav link click
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Nav shadow on scroll
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      nav.style.boxShadow = '0 4px 30px rgba(44,24,16,0.1)';
+    } else {
+      nav.style.boxShadow = 'none';
+    }
+  });
+</script>
+
+</body>
+</html>
